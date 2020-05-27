@@ -40,7 +40,7 @@ proc toUTF16BEWithBom*(input: string): string =
   ## Converts UTF8 to UTF16 BE with byte order mark string.
   toUTF16Inner(input, true, true)
 
-proc fromUTF16Inner*(s: StringStream, swap: bool): string =
+proc fromUTF16Inner(s: StringStream, swap: bool): string =
   ## Converts UTF16 Big Endian to UTF8 string.
   while not s.atEnd():
     var u1 = s.readUInt16().maybeSwap(swap)
@@ -55,7 +55,7 @@ proc fromUTF16Inner*(s: StringStream, swap: bool): string =
         result.add "□"
 
 proc fromUTF16*(input: string): string =
-  ## Converts UTF16 with byte order marker to UTF8 string.
+  ## Converts UTF16 trying to read byte order marker to UTF8 string.
   var
     s = newStringStream(input)
     swap: bool = false
@@ -67,12 +67,12 @@ proc fromUTF16*(input: string): string =
   s.fromUTF16Inner(swap)
 
 proc fromUTF16BE*(input: string): string =
-  ## Converts UTF16 Big Endian (not common on windows) to UTF8 string.
+  ## Converts UTF16 Big Endian to UTF8 string.
   var s = newStringStream(input)
   s.fromUTF16Inner(true)
 
 proc fromUTF16LE*(input: string): string =
-  ## Converts UTF16 Little Endian (common on windows) to UTF8 string.
+  ## Converts UTF16 Little Endian to UTF8 string.
   var s = newStringStream(input)
   s.fromUTF16Inner(false)
 
