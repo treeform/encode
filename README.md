@@ -16,7 +16,7 @@ import encode
 Converts UTF8 to UTF16 LE string.
 
 ```nim
-proc toUTF16LE(input: string): string {.raises: [Defect, IOError, OSError],                                 tags: [WriteIOEffect, ReadIOEffect].}
+proc toUTF16LE(input: string): string 
 ```
 
 ## **proc** toUTF16BE
@@ -24,7 +24,7 @@ proc toUTF16LE(input: string): string {.raises: [Defect, IOError, OSError],     
 Converts UTF8 to UTF16 BE string.
 
 ```nim
-proc toUTF16BE(input: string): string {.raises: [Defect, IOError, OSError],                                 tags: [WriteIOEffect, ReadIOEffect].}
+proc toUTF16BE(input: string): string 
 ```
 
 ## **proc** toUTF16LEWithBom
@@ -32,7 +32,7 @@ proc toUTF16BE(input: string): string {.raises: [Defect, IOError, OSError],     
 Converts UTF8 to UTF16 LE with byte order mark string.
 
 ```nim
-proc toUTF16LEWithBom(input: string): string {.raises: [Defect, IOError, OSError], tags: [WriteIOEffect, ReadIOEffect].}
+proc toUTF16LEWithBom(input: string): string 
 ```
 
 ## **proc** toUTF16BEWithBom
@@ -40,7 +40,7 @@ proc toUTF16LEWithBom(input: string): string {.raises: [Defect, IOError, OSError
 Converts UTF8 to UTF16 BE with byte order mark string.
 
 ```nim
-proc toUTF16BEWithBom(input: string): string {.raises: [Defect, IOError, OSError], tags: [WriteIOEffect, ReadIOEffect].}
+proc toUTF16BEWithBom(input: string): string 
 ```
 
 ## **proc** fromUTF16
@@ -48,7 +48,7 @@ proc toUTF16BEWithBom(input: string): string {.raises: [Defect, IOError, OSError
 Converts UTF16 trying to read byte order marker to UTF8 string.
 
 ```nim
-proc fromUTF16(input: string): string {.raises: [Defect, IOError, OSError],                                 tags: [ReadIOEffect].}
+proc fromUTF16(input: string): string 
 ```
 
 ## **proc** fromUTF16BE
@@ -56,7 +56,7 @@ proc fromUTF16(input: string): string {.raises: [Defect, IOError, OSError],     
 Converts UTF16 Big Endian to UTF8 string.
 
 ```nim
-proc fromUTF16BE(input: string): string {.raises: [Defect, IOError, OSError],                                   tags: [ReadIOEffect].}
+proc fromUTF16BE(input: string): string 
 ```
 
 ## **proc** fromUTF16LE
@@ -64,7 +64,7 @@ proc fromUTF16BE(input: string): string {.raises: [Defect, IOError, OSError],   
 Converts UTF16 Little Endian to UTF8 string.
 
 ```nim
-proc fromUTF16LE(input: string): string {.raises: [Defect, IOError, OSError],                                   tags: [ReadIOEffect].}
+proc fromUTF16LE(input: string): string 
 ```
 
 ## **proc** toUTF32
@@ -72,7 +72,7 @@ proc fromUTF16LE(input: string): string {.raises: [Defect, IOError, OSError],   
 Converts UTF8 string to utf32.
 
 ```nim
-proc toUTF32(input: string): string {.raises: [Defect, IOError, OSError],                               tags: [WriteIOEffect, ReadIOEffect].}
+proc toUTF32(input: string): string 
 ```
 
 ## **proc** fromUTF32
@@ -80,6 +80,6 @@ proc toUTF32(input: string): string {.raises: [Defect, IOError, OSError],       
 Converts utf32 to UTF8 string.
 
 ```nim
-proc fromUTF32(input: string): string {.raises: [Defect, IOError, OSError],                                 tags: [ReadIOEffect].}
+proc fromUTF32(input: string): string 
 ```
 
