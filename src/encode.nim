@@ -7,6 +7,7 @@ func maybeSwap(u: uint16, swap: bool): uint16 =
     u
 
 proc toUTF16Inner(input: string, swap: bool, bom: bool): string =
+  ## Converts UTF8 to UTF16.
   var s = newStringStream(input)
   if bom:
     s.write(0xFEFF.uint16.maybeSwap(swap))
