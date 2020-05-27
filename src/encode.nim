@@ -25,19 +25,23 @@ proc toUTF16Inner(input: string, swap: bool, bom: bool): string =
   return s.readAll()
 
 proc toUTF16LE*(input: string): string =
+  ## Converts UTF8 to UTF16 LE string.
   toUTF16Inner(input, false, false)
 
 proc toUTF16BE*(input: string): string =
+  ## Converts UTF8 to UTF16 BE string.
   toUTF16Inner(input, true, false)
 
 proc toUTF16LEWithBom*(input: string): string =
+  ## Converts UTF8 to UTF16 LE with byte order mark string.
   toUTF16Inner(input, false, true)
 
 proc toUTF16BEWithBom*(input: string): string =
+  ## Converts UTF8 to UTF16 BE with byte order mark string.
   toUTF16Inner(input, true, true)
 
 proc fromUTF16Inner*(s: StringStream, swap: bool): string =
-  ## Converts UTF16 Big Endian to utf8 string.
+  ## Converts UTF16 Big Endian to UTF8 string.
   while not s.atEnd():
     var u1 = s.readUInt16().maybeSwap(swap)
     if u1 - 0xd800 >= 0x800:
@@ -51,7 +55,7 @@ proc fromUTF16Inner*(s: StringStream, swap: bool): string =
         result.add "□"
 
 proc fromUTF16*(input: string): string =
-  ## Converts UTF16 with byte order marker to utf8 string.
+  ## Converts UTF16 with byte order marker to UTF8 string.
   var
     s = newStringStream(input)
     swap: bool = false
@@ -63,17 +67,17 @@ proc fromUTF16*(input: string): string =
   s.fromUTF16Inner(swap)
 
 proc fromUTF16BE*(input: string): string =
-  ## Converts UTF16 Big Endian (not common on windows) to utf8 string.
+  ## Converts UTF16 Big Endian (not common on windows) to UTF8 string.
   var s = newStringStream(input)
   s.fromUTF16Inner(true)
 
 proc fromUTF16LE*(input: string): string =
-  ## Converts UTF16 Little Endian (common on windows) to utf8 string.
+  ## Converts UTF16 Little Endian (common on windows) to UTF8 string.
   var s = newStringStream(input)
   s.fromUTF16Inner(false)
 
 proc toUTF32*(input: string): string =
-  ## Converts utf8 string to utf32.
+  ## Converts UTF8 string to utf32.
   var s = newStringStream(input)
   for r in input.runes:
     s.write(r.uint32)
@@ -81,7 +85,7 @@ proc toUTF32*(input: string): string =
   return s.readAll()
 
 proc fromUTF32*(input: string): string =
-  ## Converts utf32 to utf8 string.
+  ## Converts utf32 to UTF8 string.
   var s = newStringStream(input)
   while not s.atEnd():
     result.add Rune(s.readUInt32())
